@@ -1,0 +1,58 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Inline Timing</h1>
+  <mat-grid-list cols="2" >
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            console.time & console.timeEnd
+            <button mat-icon-button class="more-button" aria-label="Toggle menu">
+              <mat-icon>fullscreen</mat-icon>
+            </button>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <pre>
+<code class="language-js">
+function test() {{ '{' }}
+  console.time("time-label");
+  for (let i = 0; i < 1000; i++) {{ '{' }}
+    // do complicated stuff...
+  {{ '}' }}
+  console.timeEnd("time-label");
+{{ '}' }}</code>
+          </pre>
+          <i>Show console output</i>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+    <!-- <mat-grid-tile [colspan]="1" [rowspan]="2"> -->
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Performance.now()
+            <button mat-icon-button class="more-button" aria-label="Toggle menu">
+              <mat-icon>fullscreen</mat-icon>
+            </button>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <pre>
+<code class="language-js">
+function test() {{ '{' }}
+  const t0 = performance.now();
+  for (let i = 0; i < 1000; i++) {{ '{' }}
+    // do complicated stuff...
+  {{ '}' }}
+  const t1 = performance.now();
+  console.log(`time taken $ {{ '{' }}t1 - t0{{ '}' }}`);
+{{ '}' }}</code>
+          </pre>
+          <button mat-raised-button (click)="runPerformance()">Run</button>
+          <p>{{ performanceTime }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

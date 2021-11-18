@@ -1,0 +1,38 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Introduction</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Introduction
+            <button mat-icon-button class="more-button" aria-label="Toggle menu">
+              <mat-icon>fullscreen</mat-icon>
+            </button>
+          </mat-card-title>
+
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Agenda
+            <button mat-icon-button class="more-button" (click)="expand('agenda')" aria-label="Toggle menu">
+              <mat-icon>fullscreen</mat-icon>
+            </button>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <img style="position: absolute; bottom: 250px;" src="https://www.azquotes.com/picture-quotes/quote-if-you-can-not-measure-it-you-can-not-improve-it-lord-kelvin-79-18-55.jpg" />
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

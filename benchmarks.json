@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json",
+  "sampleSize": 2,
+  "benchmarks": [
+    {
+      "name": "my-benchmark",
+      "url": "http://localhost:3000",
+      "measurement": {
+        "mode": "performance",
+        "entryName": "foo"
+      }
+    },
+    {
+      "name": "my-benchmark",
+      "url": "http://localhost:3001",
+      "measurement": {
+        "mode": "performance",
+        "entryName": "foo"
+      }
+    }
+  ]
+}
