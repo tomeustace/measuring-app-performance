@@ -1,6 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1"></h1>
-  <mat-grid-list cols="3" rowHeight="250px">
+  <mat-grid-list cols="3" rowHeight="300px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
@@ -27,10 +27,15 @@
 
         </mat-card-header>
         <mat-card-content>
-          <p>ng build</p>
-          <p>copy dist to another directory</p>
-          <p>run `serve (npm i serve)` on both</p>
-          <p>tachometer --config benchmarks.json</p>
+          <p>Alter builds (A / B) with varying algorithms/packages etc to test against.</p>
+          <ul>
+            <li>ng build --output-path=dist/appA</li>
+            <li>ng build --output-path=dist/appB</li>
+            <li>serve -p 3000, serve -p 3001</li>
+            <li>tachometer --config benchmarks.json</li>
+            <li>load trace logs chrome://tracing</li>
+          </ul>
+          <p>Swap NPM dependencies</p>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -46,22 +51,30 @@
 <code class="language-js">
 {{ '{' }}
   "$schema": "https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json",
-  "sampleSize": 2,
+  "sampleSize": 20,
   "benchmarks": [
     {{ '{' }}
       "name": "my-benchmark",
       "url": "http://localhost:3000",
+      "browser": {{ '{' }}
+        "name": "chrome",
+        "trace": true,
+      {{ '}' }},
       "measurement": {{ '{' }}
         "mode": "performance",
-        "entryName": "foo"
+        "entryName": "my-measure"
       {{ '}' }}
     {{ '}' }},
     {{ '{' }}
       "name": "my-benchmark",
       "url": "http://localhost:3001",
+      "browser": {{ '{' }}
+        "name": "chrome",
+        "trace": true,
+      {{ '}' }},
       "measurement": {{ '{' }}
         "mode": "performance",
-        "entryName": "foo"
+        "entryName": "my-measure"
     {{ '}' }},
   {{ '}' }},
   ]
@@ -72,7 +85,8 @@
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="2">
-      <img width="96%" height="400px" src="./../../assets/images/tachometer.png" />
+      <img src="./../../assets/images/tachometer.png" />
+      <!-- <img width="100%" height="400px" src="./../../assets/images/tachometer.png" /> -->
     </mat-grid-tile>
   </mat-grid-list>
 </div>
