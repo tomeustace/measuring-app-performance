@@ -4,17 +4,15 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar class="heading">
-      @tomeustace 😉
+      Agenda 🎬
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="'dashboard'">Intro</a>
-      <a mat-list-item [routerLink]="'basic-timing'">Inline Timing</a>
-      <a mat-list-item [routerLink]="'measure-mark'">Mark & Measure</a>
-      <a mat-list-item [routerLink]="'tachometer'">Tachometer</a>
-      <a mat-list-item [routerLink]="'performance-observer'">Performance Observer</a>
-      <a mat-list-item href="#">Entry Types</a>
-      <a mat-list-item href="#">Future</a>
-      <a mat-list-item href="#">Random</a>
+      <a mat-list-item [routerLink]="'dashboard'" [routerLinkActive]="['active']">Intro</a>
+      <a mat-list-item [routerLink]="'measure-mark'" [routerLinkActive]="['active']">Mark & Measure</a>
+      <a mat-list-item [routerLink]="'performance-observer'" [routerLinkActive]="['active']">Performance Observer</a>
+      <a mat-list-item [routerLink]="'tachometer'" [routerLinkActive]="['active']">Tachometer</a>
+      <a mat-list-item [routerLink]="'basic-timing'" [routerLinkActive]="['active']">Inline Timing</a>
+      <a mat-list-item [routerLink]="'resources'" [routerLinkActive]="['active']">Resources</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -27,7 +25,10 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Measuring Application Performance</span>
+      <div class="spacer">
+        <span>Measuring Web Application Performance</span>
+        <span>@tomeustace</span>
+      </div>
     </mat-toolbar>
 
     <router-outlet></router-outlet>

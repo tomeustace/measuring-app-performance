@@ -1,23 +1,31 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Web Performance API</h1>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile>
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            Introduction
-            <button mat-icon-button class="more-button" aria-label="Toggle menu">
-              <mat-icon>fullscreen</mat-icon>
-            </button>
+            <h2>Creating Marks and Measures 📏 </h2>
           </mat-card-title>
 
         </mat-card-header>
         <mat-card-content>
-          <div class="quote">
-            <q>The Performance interface provides access to performance-related information for the current page. It's
-              part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing
-              API, the User Timing API, and the Resource Timing API.
-            </q>
+          <div>
+            <ul>
+              <li>Create a starting mark - performance.mark('my-start-mark')</li>
+              <li>Create an ending mark - performance.mark('my-end-mark')</li>
+                <ul>
+                  <li>
+                    <p>performance.mark() Creates a timestamp in the browser's performance entry buffer with the given name.</p>
+                  </li>
+                </ul>
+              <li>Create a measure of the marks - performance.measure('my-measure', 'my-start-mark', 'my-end-mark')</li>
+                <ul>
+                  <li>
+                    <p>The measure() method creates a named timestamp in the browser's performance entry buffer between marks, the navigation start time, or the current time.
+                    </p>
+                  </li>
+                </ul>
+            </ul>
           </div>
         </mat-card-content>
       </mat-card>
@@ -26,18 +34,23 @@
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            Agenda
-            <button mat-icon-button class="more-button" aria-label="Toggle menu">
-              <mat-icon>fullscreen</mat-icon>
-            </button>
+            Mark & Measure Angular Lifecycle Hooks 🐟
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <pre>
+<code class="language-js">
+  performance.mark('onInit');
+  performance.mark('afterViewInit');
+  performance.measure('onInit-to-afterViewInit', 'onInit', 'afterViewInit');
+</code>
+          </pre>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
+
     <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <img src="./../../assets/images/onInit-to-afterViewInit.png" />
     </mat-grid-tile>
   </mat-grid-list>
 </div>

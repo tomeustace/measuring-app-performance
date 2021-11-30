@@ -31,6 +31,14 @@ export class BasicTimingComponent implements OnInit {
     this.performanceTime = t1 - t0;
   }
 
+  runConsoleTime() {
+    console.time('time-label');
+    for (let i = 0; i < this.randomNumber(10000, 100000); i++) {
+      // do stuff
+    }
+    console.timeEnd('time-label');
+  }
+
   randomNumber(min, max) {
     return Math.random() * (max - min) + min;
   }

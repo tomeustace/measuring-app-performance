@@ -17,6 +17,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { HighlightService } from './highlight.service';
+import { PerformanceService } from './performance.service';
 import { BasicTimingComponent } from './basic-timing/basic-timing.component';
 import { TachometerComponent } from './tachometer/tachometer.component';
 import { PerformanceObserverComponent } from './performance-observer/performance-observer.component';
@@ -47,7 +48,7 @@ import { ResourcesComponent } from './resources/resources.component';
     MatMenuModule,
     MatButtonModule
   ],
-  providers: [HighlightService],
+  providers: [HighlightService, PerformanceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

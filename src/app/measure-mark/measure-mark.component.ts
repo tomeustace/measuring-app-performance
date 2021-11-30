@@ -1,33 +1,45 @@
-import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HighlightService } from '../highlight.service';
+import { PerformanceService } from '../performance.service';
 @Component({
   selector: 'app-measure-mark',
   templateUrl: './measure-mark.component.html',
   styleUrls: ['./measure-mark.component.scss']
 })
 export class MeasureMarkComponent {
-  /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
+  constructor(private route: ActivatedRoute, private highlightService: HighlightService, private performanceService: PerformanceService) {
+    performanceService.startPerformanceObserver(this.constructor.name, ['mark', 'measure']);
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+    performance.mark('constructor');
+    this.route.data.subscribe(data => {
+      performance.mark('resolved-data-end');
+      performance.measure('resolved-data', 'resolved-data-start', 'resolved-data-end');
+
+      // DON'T USE OUTSIDE OF CHROME, NOT STANDARD API
+      // console.log("Used JS Heap Size", (performance?.memory.usedJSHeapSize / 1048576).toFixed(2) + "MB");
+    });
+  }
+
+  ngOnInit() {
+    performance.mark('onInit');
+    let now;
+    for (let i = 0; i < 100000; i++) {
+      now = new Date();
+    }
+  }
+
+  ngAfterViewInit() {
+    this.highlightService.highlightAll();
+    performance.mark('afterViewInit');
+
+    performance.measure('onInit-to-afterViewInit', 'onInit', 'afterViewInit');
+    // performance.measure('constructor-to-viewinit', 'constructor', 'afterViewInit');
+  }
+
+  ngOnDestroy() {
+    this.performanceService.stopPerformanceObserver();
+  }
+
 }

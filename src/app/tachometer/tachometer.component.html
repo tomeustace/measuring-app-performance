@@ -1,1 +1,78 @@
-<p>tachometer works!</p>
+<div class="grid-container">
+  <h1 class="mat-h1"></h1>
+  <mat-grid-list cols="3" rowHeight="250px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Tachometer
+          </mat-card-title>
+
+        </mat-card-header>
+        <mat-card-content>
+          <q>
+            Even if you run the same JavaScript, on the same browser, on the same machine, on the same day, you'll still
+            get a different result every time. But if you take enough repeated samples and apply the right statistics,
+            you can reliably identify even tiny differences in runtime.
+          </q>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Running Benchmarks
+          </mat-card-title>
+
+        </mat-card-header>
+        <mat-card-content>
+          <p>ng build</p>
+          <p>copy dist to another directory</p>
+          <p>run `serve (npm i serve)` on both</p>
+          <p>tachometer --config benchmarks.json</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="3">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            benchmarks.json
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <pre>
+<code class="language-js">
+{{ '{' }}
+  "$schema": "https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json",
+  "sampleSize": 2,
+  "benchmarks": [
+    {{ '{' }}
+      "name": "my-benchmark",
+      "url": "http://localhost:3000",
+      "measurement": {{ '{' }}
+        "mode": "performance",
+        "entryName": "foo"
+      {{ '}' }}
+    {{ '}' }},
+    {{ '{' }}
+      "name": "my-benchmark",
+      "url": "http://localhost:3001",
+      "measurement": {{ '{' }}
+        "mode": "performance",
+        "entryName": "foo"
+    {{ '}' }},
+  {{ '}' }},
+  ]
+{{ '}' }},
+</code>
+          </pre>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <img width="96%" height="400px" src="./../../assets/images/tachometer.png" />
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

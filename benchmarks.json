@@ -7,7 +7,7 @@
       "url": "http://localhost:3000",
       "measurement": {
         "mode": "performance",
-        "entryName": "foo"
+        "entryName": "my-measure"
       }
     },
     {
@@ -15,7 +15,7 @@
       "url": "http://localhost:3001",
       "measurement": {
         "mode": "performance",
-        "entryName": "foo"
+        "entryName": "my-measure"
       }
     }
   ]

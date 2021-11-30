@@ -11,12 +11,15 @@
   bottom: 15px;
 }
 
-.more-button {
+button {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  bottom: 15px;
+  right: 15px;
+  background-color: rgb(28, 190, 240);
+  color: white;
+  font-size: 16px;
 }
-
-// .dashboard-card-content {
-//   text-align: center;
-// }
+.quote {
+  padding: 8px;
+  background: hsla(0, 0, 0, .1);
+}

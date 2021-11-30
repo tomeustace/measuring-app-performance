@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { HighlightService } from '../highlight.service';
 
 @Component({
   selector: 'app-tachometer',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TachometerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private highlightService: HighlightService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  ngAfterViewInit() {
+    this.highlightService.highlightAll();
   }
 
 }

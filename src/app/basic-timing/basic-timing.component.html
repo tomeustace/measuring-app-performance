@@ -1,14 +1,10 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Inline Timing</h1>
-  <mat-grid-list cols="2" >
+  <mat-grid-list cols="2" rowHeight="400px">
     <mat-grid-tile>
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
             console.time & console.timeEnd
-            <button mat-icon-button class="more-button" aria-label="Toggle menu">
-              <mat-icon>fullscreen</mat-icon>
-            </button>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
@@ -22,7 +18,7 @@ function test() {{ '{' }}
   console.timeEnd("time-label");
 {{ '}' }}</code>
           </pre>
-          <i>Show console output</i>
+          <button mat-raised-button (click)="runConsoleTime()">Run</button>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -31,10 +27,7 @@ function test() {{ '{' }}
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            Performance.now()
-            <button mat-icon-button class="more-button" aria-label="Toggle menu">
-              <mat-icon>fullscreen</mat-icon>
-            </button>
+            Performance Web API
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
@@ -52,6 +45,18 @@ function test() {{ '{' }}
           <button mat-raised-button (click)="runPerformance()">Run</button>
           <p>{{ performanceTime }}</p>
         </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Performance Monitor
+          </mat-card-title>
+        </mat-card-header>
+        <p>ctrl + shift + p -> performance monitor</p>
+      <img width="90%" height="250px" src="./../../assets/images/performance_monitor.png" />
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

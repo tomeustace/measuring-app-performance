@@ -1,1 +1,76 @@
-<p>performance-observer works!</p>
+<div class="grid-container">
+  <h1 class="mat-h1"></h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile>
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            PerformanceObserver
+          </mat-card-title>
+
+        </mat-card-header>
+        <mat-card-content>
+          <p>The PerformanceObserver interface is used to observe performance measurement events and be notified of new performance entries as they are recorded in the browser's performance timeline.
+            </p>
+
+            <p>PerformanceObserver.supportedEntryTypes() - show supported entry types</p>
+            <p>PerformanceObserver.observe() - begin observing</p>
+            <p>PerformanceObserver.takeRecords() - empties entries</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <pre>
+<code class="language-js">
+  const observerCallback = list => {{ '{' }}
+          list.getEntries().forEach(entry => {{ '{' }}
+              console.log(` ${{ '{' }}entry.entryType {{ '}' }}: ${{ '{' }} entry.name {{ '}' }}`);
+            {{ '}' }}
+          {{ '}' }});
+        {{ '}' }};
+  this.performanceObserver = new PerformanceObserver(this.observerCallback);
+  const types = ['mark', 'measure', 'navigation', 'resource' ];
+  this.performanceObserver.observe( entryTypes: types );
+</code>
+          </pre>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            PerformanceObserver Entry Types
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+            <pre>
+          <code class="language-js">
+            PerformanceObserver.supportedEntryTypes();
+            //[
+            //    "element", Reports load time of elements.
+            //    "event", The document's address
+            //    "first-input", The time of the first input
+            //    "largest-contentful-paint", The time of the largest contentful paint
+            //    "layout-shift", The time of the layout shift
+            //    "longtask", The time of the long task
+            //    "mark", The mark name
+            //    "measure", The measure name
+            //    "navigation", The time of the navigation
+            //    "paint", paint timing (first-paint or first-contentful-paint)
+            //    "resource" The resolved URL of the requested resource
+            //]
+
+          </code>
+            </pre>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
